@@ -34,7 +34,10 @@ const UserSchema = new mongoose.Schema({
   
   // Additional tracking
   joinDate: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
+  updatedAt: { type: Date, default: Date.now },
+  // Only a hash is stored, so a database leak cannot be used to reset accounts.
+  passwordResetToken: { type: String, select: false },
+  passwordResetExpires: { type: Date, select: false }
 });
 
 // Update the updatedAt timestamp on save

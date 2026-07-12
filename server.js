@@ -11,7 +11,7 @@ initGridFS();
 
 const app = express();
 app.use(cors({
-  origin: 'https://studynep.vercel.app',
+  origin: '*',
   credentials: true
 }));
 app.use(express.json());
