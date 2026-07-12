@@ -78,6 +78,8 @@ const forgotPassword = async (req, res) => {
     const clientUrl = (process.env.CLIENT_URL || 'http://localhost:5173').replace(/\/$/, '');
     const resetUrl = `${clientUrl}/reset-password/${resetToken}`;
     try {
+      console.log("Starting email send...");
+      console.log("To:", user.email);
       await getMailTransporter().sendMail({
         from: process.env.MAIL_FROM || `StudyNep <${process.env.GMAIL_USER}>`,
         to: user.email,
